@@ -13,24 +13,20 @@ Installation
 
 1. Install django-timetable
 
-    pip install django-timetable
+        pip install django-timetable
 
 2. Install Taggit:
 
-    pip install django-taggit
+        pip install django-taggit
 
 3. Install django-colorful:
 
-    pip install django-colorful
+        pip install django-colorful
 
 4. In settings.py file add the following to DJANGO_APPS:
 
-    DJANGO_APPS = (
-
-        ...
-
-        'taggit',
-
-        'timetable',
-
-    )
+        DJANGO_APPS = (
+            ...
+            'taggit',
+            'timetable',
+        )
