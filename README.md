@@ -15,7 +15,7 @@ Installation
 
         $ pip install django-timetable
 
-2. Install Taggit:
+2. Install django-taggit:
 
         $ pip install django-taggit
 
