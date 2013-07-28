@@ -1,10 +1,21 @@
+========================
 django-timetable
-=================
+========================
 
 Required packages
 ------------------
-* django-taggit==0.10a1  # https://github.com/alex/django-taggit
-* django-colorful==0.1.3  # https://github.com/charettes/django-colorful
+* django-taggit
+    https://github.com/alex/django-taggit
+* django-colorful
+    https://github.com/charettes/django-colorful
 
 Installation
 ------------
+
+1. Install django-timetable
+    $ pip install django-timetable
+2. Install Taggit:
+    $ pip install django-taggit
+3. Install django-colorful:
+    $ pip install django-colorful
+
