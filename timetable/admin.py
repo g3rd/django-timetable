@@ -3,7 +3,7 @@ from django.contrib import admin
 
 
 class CalendarAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ('color_display', 'name', )
     list_display_links = ('name', )
 
     prepopulated_fields = {'slug': ('name', )}

@@ -29,6 +29,10 @@ class Calendar(models.Model):
     def __unicode__(self):
         return self.name
 
+    def color_display(self):
+        return '<span style="display: inline-block; width: 13px; height: 13px; background-color: %(c)s; border: 1px solid #000; margin-right: 7px;"></span>' % {'c': self.color.color, }
+    color_display.allow_tags = True
+
     class Meta:
         verbose_name = _('Calendar')
         verbose_name_plural = _('Calendars')
