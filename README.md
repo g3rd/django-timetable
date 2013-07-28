@@ -26,7 +26,11 @@ Installation
 4. In settings.py file add the following to DJANGO_APPS:
 
     DJANGO_APPS = (
+
         ...
+
         'taggit',
+
         'timetable',
+
     )
