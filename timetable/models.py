@@ -1,6 +1,6 @@
 from colorful.fields import RGBColorField
-from datetime import date
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
 
@@ -71,35 +71,36 @@ class Event(models.Model):
     description = models.TextField(_('Description'), blank=True, null=True)
 
     # Date Time Fields
-    start_date = models.DateField(_('Start Date'))
-    start_time = models.TimeField(_('Start Time'), blank=True, null=True)
-    end_date = models.DateField(_('End Date'), blank=True, null=True)
-    end_time = models.TimeField(_('End Time'), blank=True, null=True)
+    start_date_time = models.DateTimeField(_('Start Date Time'))
+    end_date_time = models.DateTimeField(_('End Date Time'), blank=True, null=True)
+    all_day_event = models.BooleanField(_('All Day Event'), default=False)
 
     # Classification
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     def __unicode__(self):
         return self.name
 
-    def all_day_event(self):
-        if not self.start_time and not self.end_time:
-            return True
-        return False
-    all_day_event.boolean = True
-    all_day_event.short_description = _('All Day Event')
-
     def active(self):
-        t = date.today()
-
-        return self.start_date <= t and self.end_date >= t
+        if self.start_date_time and self.end_date_time:
+            t = timezone.now()
+            return self.start_date_time <= t and self.end_date_time >= t
+        return False
     active.boolean = True
     active.short_description = _('Active')
+
+    def fake_slug(self):
+        pass
+
+    def calendar_color(self):
+        return '<span style="display: inline-block; width: 13px; height: 13px; background-color: %(c)s; border: 1px solid #000; margin-right: 7px;"></span> %(cn)s' % {'c': self.calendar.color.color, 'cn': self.calendar.name, }
+    calendar_color.allow_tags = True
+    calendar_color.short_description = _('Calendar')
 
     class Meta:
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
-        unique_together = ('start_date', 'slug', )
+        #unique_together = ('start_date_time', 'slug', )
 
 
 class EventClassification(models.Model):

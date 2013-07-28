@@ -1,5 +1,6 @@
 from timetable.models import Calendar, Classification, Color, Event, EventClassification
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 
 class CalendarAdmin(admin.ModelAdmin):
@@ -13,16 +14,15 @@ class CalendarAdmin(admin.ModelAdmin):
 admin.site.register(Calendar, CalendarAdmin)
 
 
-# class Admin(admin.ModelAdmin):
-#     list_display = ('name', )
-#     list_display_links = ('name', )
-#     list_filter = ('', )
+class ClassificationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    list_display_links = ('name', )
 
-#     prepopulated_fields = {'slug': ('name', )}
+    prepopulated_fields = {'slug': ('name', )}
 
-#     fieldsets = ((None, {'fields': ('name', 'slug', )}),)
+    fieldsets = ((None, {'fields': ('name', 'slug', 'description', )}),)
 
-# admin.site.register(, Admin)
+admin.site.register(Classification, ClassificationAdmin)
 
 
 class ColorAdmin(admin.ModelAdmin):
@@ -34,25 +34,22 @@ class ColorAdmin(admin.ModelAdmin):
 admin.site.register(Color, ColorAdmin)
 
 
-# class Admin(admin.ModelAdmin):
-#     list_display = ('name', )
-#     list_display_links = ('name', )
-#     list_filter = ('', )
-
-#     prepopulated_fields = {'slug': ('name', )}
-
-#     fieldsets = ((None, {'fields': ('name', 'slug', )}),)
-
-# admin.site.register(, Admin)
+class EventClassificationInline(admin.StackedInline):
+    model = EventClassification
+    extra = 0
 
 
-# class Admin(admin.ModelAdmin):
-#     list_display = ('name', )
-#     list_display_links = ('name', )
-#     list_filter = ('', )
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('calendar_color', 'name', 'start_date_time', 'end_date_time', 'all_day_event', 'active', )
+    list_display_links = ('name', )
+    list_filter = ('calendar', )
 
-#     prepopulated_fields = {'slug': ('name', )}
+    inlines = [EventClassificationInline, ]
 
-#     fieldsets = ((None, {'fields': ('name', 'slug', )}),)
+    prepopulated_fields = {'slug': ('name', )}
 
-# admin.site.register(, Admin)
+    fieldsets = ((None, {'fields': ('calendar', 'name', 'slug', 'description')}),
+                (_('Date and Time'), {'fields': ('start_date_time', 'end_date_time', 'all_day_event', )}),
+                (_('Classification'), {'fields': ('tags', )}), )
+
+admin.site.register(Event, EventAdmin)
