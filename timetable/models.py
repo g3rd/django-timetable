@@ -13,6 +13,11 @@ class Color(models.Model):
     def __unicode__(self):
         return self.name
 
+    def color_display(self):
+        return '<span style="display: inline-block; width: 13px; height: 13px; background-color: %(c)s; border: 1px solid #000; margin-right: 7px;"></span> %(c)s' % {'c': self.color, }
+    color_display.allow_tags = True
+    color_display.short_description = _('Color')
+
     class Meta:
         verbose_name = _('Color')
         verbose_name_plural = _('Colors')
@@ -32,6 +37,7 @@ class Calendar(models.Model):
     def color_display(self):
         return '<span style="display: inline-block; width: 13px; height: 13px; background-color: %(c)s; border: 1px solid #000; margin-right: 7px;"></span>' % {'c': self.color.color, }
     color_display.allow_tags = True
+    color_display.short_description = _('Color')
 
     class Meta:
         verbose_name = _('Calendar')

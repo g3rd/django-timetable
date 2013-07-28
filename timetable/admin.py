@@ -26,7 +26,7 @@ admin.site.register(Calendar, CalendarAdmin)
 
 
 class ColorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'color', )
+    list_display = ('name', 'color_display', )
     list_display_links = ('name', )
 
     fieldsets = ((None, {'fields': ('name', 'color', )}),)
