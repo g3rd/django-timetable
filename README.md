@@ -1,12 +1,14 @@
 django-timetable
 ========================
 
+
 Required packages
 ------------------
 * django-taggit
     https://github.com/alex/django-taggit
 * django-colorful
     https://github.com/charettes/django-colorful
+
 
 Installation
 ------------
@@ -30,3 +32,11 @@ Installation
             'taggit',
             'timetable',
         )
+
+
+Change Log
+----------
+
+0.1.1 - Fixed packaging issue for PyPi
+
+0.1.0 - Base working version
