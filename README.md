@@ -17,15 +17,7 @@ Installation
 
         $ pip install django-timetable
 
-2. Install django-taggit:
-
-        $ pip install django-taggit
-
-3. Install django-colorful:
-
-        $ pip install django-colorful
-
-4. In settings.py file add the following to DJANGO_APPS:
+2. In settings.py file add the following to DJANGO_APPS:
 
         DJANGO_APPS = (
             ...
@@ -36,6 +28,10 @@ Installation
 
 Change Log
 ----------
+
+0.1.2:
+- Made the Event name searchable on the admin page.
+- Updated the instructions.
 
 0.1.1 - Fixed packaging issue for PyPi
 

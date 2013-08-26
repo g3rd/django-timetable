@@ -17,6 +17,11 @@ setup(
     requires=[
         'Django (>=1.5)',
     ],
+    install_requires=[
+        'django',
+        'django-taggit',
+        'django-colorful',
+    ],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=True,
