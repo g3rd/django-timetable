@@ -43,6 +43,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('calendar_color', 'name', 'start_date_time', 'end_date_time', 'all_day_event', 'active', )
     list_display_links = ('name', )
     list_filter = ('calendar', )
+    search_fields = ['name', ]
 
     inlines = [EventClassificationInline, ]
 
