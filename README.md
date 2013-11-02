@@ -29,6 +29,8 @@ Installation
 Change Log
 ----------
 
+0.1.3 - Fixed an issue with all day events
+
 0.1.2:
 - Made the Event name searchable on the admin page.
 - Updated the instructions.
