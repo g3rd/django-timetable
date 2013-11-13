@@ -98,9 +98,6 @@ class Event(models.Model):
     active.boolean = True
     active.short_description = _('Active')
 
-    def fake_slug(self):
-        pass
-
     def calendar_color(self):
         return '<span style="display: inline-block; width: 13px; height: 13px; background-color: %(c)s; border: 1px solid #000; margin-right: 7px;"></span> %(cn)s' % {'c': self.calendar.color.color, 'cn': self.calendar.name, }
     calendar_color.allow_tags = True
