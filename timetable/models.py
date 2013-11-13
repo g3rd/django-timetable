@@ -79,7 +79,10 @@ class Event(models.Model):
     tags = TaggableManager(blank=True)
 
     def __unicode__(self):
-        return self.name
+        date_format = '%Y-%m-%d %I:%M %p'
+        if self.all_day_event:
+            date_format = '%Y-%m-%d'
+        return '%(n)s (%(d)s)' % {'n': self.name, 'd': self.start_date_time..strftime(date_format), }
 
     def save(self):
         if self.all_day_event:
