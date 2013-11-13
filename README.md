@@ -29,6 +29,8 @@ Installation
 Change Log
 ----------
 
+0.1.5 - Fixed syntax error in the model
+
 0.1.4:
 - Changed unicode name
 - Removed unused code
