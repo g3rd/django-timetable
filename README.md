@@ -29,6 +29,10 @@ Installation
 Change Log
 ----------
 
+0.1.4:
+- Changed unicode name
+- Removed unused code
+
 0.1.3 - Fixed an issue with all day events
 
 0.1.2:
