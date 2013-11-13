@@ -109,7 +109,6 @@ class Event(models.Model):
     class Meta:
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
-        #unique_together = ('start_date_time', 'slug', )
 
 
 class EventClassification(models.Model):
