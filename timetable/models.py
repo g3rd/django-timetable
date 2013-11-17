@@ -84,15 +84,6 @@ class Event(models.Model):
             date_format = '%Y-%m-%d'
         return '%(n)s (%(d)s)' % {'n': self.name, 'd': self.start_date_time.strftime(date_format), }
 
-    def save(self):
-        if self.all_day_event:
-            self.start_date_time = self.start_date_time.replace(hour=0, minute=0, second=0, microsecond=0)
-            if not self.end_date_time:
-                self.end_date_time = self.start_date_time
-            self.end_date_time = self.end_date_time.replace(hour=23, minute=59, second=59, microsecond=0)
-
-        super(Event, self).save()
-
     def active(self):
         if self.start_date_time and self.end_date_time:
             t = timezone.now()

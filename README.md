@@ -29,6 +29,8 @@ Installation
 Change Log
 ----------
 
+0.1.6 - Removed the event all day event replaceing start and end time because it didn't handline timezone correctly.
+
 0.1.5 - Fixed syntax error in the model
 
 0.1.4:
