@@ -1,4 +1,5 @@
 from colorful.fields import RGBColorField
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -96,6 +97,10 @@ class Event(models.Model):
         return '<span style="display: inline-block; width: 13px; height: 13px; background-color: %(c)s; border: 1px solid #000; margin-right: 7px;"></span> %(cn)s' % {'c': self.calendar.color.color, 'cn': self.calendar.name, }
     calendar_color.allow_tags = True
     calendar_color.short_description = _('Calendar')
+
+    def get_absolute_update_url(self):
+        url = reverse('admin:%s_%s_change' %(self._meta.app_label,  self._meta.module_name),  args=[self.id] )
+        return url
 
     class Meta:
         verbose_name = _('Event')
