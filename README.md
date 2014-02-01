@@ -29,6 +29,11 @@ Installation
 Change Log
 ----------
 
+0.1.7:
+- Get update url from the model (get_absolute_update_url)
+- Search in admin via the name and now tags
+- Default admin sort order via the start_date_time
+
 0.1.6 - Removed the event all day event replaceing start and end time because it didn't handline timezone correctly.
 
 0.1.5 - Fixed syntax error in the model
